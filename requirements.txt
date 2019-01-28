@@ -16,3 +16,4 @@ redis==3.0.1
 requests==2.21.0
 uritemplate==3.0.0
 urllib3==1.24.1
+django_extensions=1.12.0
