@@ -27,4 +27,7 @@ class ParsedDataAPI(ModelViewSet):
     )
 
     filter_class = ParsedDataFilter
-    search_fields = ('__all__')
+    search_fields = (
+        'ip_addr', 'http_method', 'log_date',
+        'uri', 'error_code',
+    )
