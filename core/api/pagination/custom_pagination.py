@@ -9,11 +9,14 @@ class PaginationWithAggregates(pagination.LimitOffsetPagination):
         # перегружаем пагинацию для /api/v1/parsed_data/
 
         if request._request.path == '/api/v1/parsed_data/':
-            self.unique_ip_count = queryset.count()
-            self.top_ten_ip = 0
-            self.GET_count = 0
-            self.POST_count = 0
-            self.total_transfered_bytes = 0
+            self.unique_ip_count = queryset.aggregate(
+                count_ip=Count('ip_addr', distinct=True))['count_ip']
+            self.top_ten_ip = queryset.annotate(freq=Count('ip_addr')).\
+                order_by('-freq')[0:10].values('ip_addr', 'freq')
+            self.GET_count = queryset.filter(http_method='GET').count()
+            self.POST_count = queryset.filter(http_method='POST').count()
+            self.total_transfered_bytes = queryset.\
+                aggregate(total=Sum('response_size'))['total']
         return super(PaginationWithAggregates, self).paginate_queryset(
             queryset, request, view
         )

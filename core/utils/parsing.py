@@ -48,6 +48,7 @@ def parsing():
 
                         other = parsed_line[8]
 
+                        # TODO переделать через bulk_create
                         ParsedData.objects.create(
                             ip_addr=ip_addr,
                             log_date=log_date,
