@@ -22,3 +22,7 @@ env \`cat ./docker/.env\` python manage.py -l LINK
 например:
 
 env \`cat ./docker/.env\` python manage.py -l http://yandex.ru/access.log
+
+поиск работает в api (поля для поиска задаются в viewsets):
+
+http://127.0.0.1:8000/api/v1/parsed_data/?search=blablabla

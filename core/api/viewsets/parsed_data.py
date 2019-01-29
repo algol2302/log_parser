@@ -22,6 +22,7 @@ class ParsedDataAPI(ModelViewSet):
     )
 
     filter_class = ParsedDataFilter
+    # поля для поиска
     search_fields = (
         'ip_addr', 'http_method', 'log_date',
         'uri', 'error_code',
