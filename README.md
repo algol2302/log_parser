@@ -1,4 +1,4 @@
-# For running
+# To run
 
 virtualenv --python=/usr/bin/python3 .venv
 
@@ -18,6 +18,8 @@ env \`cat ./docker/.env\` python manage.py runserver
 запустить комманду импорта данных:
 
 env \`cat ./docker/.env\` python manage.py -l LINK
+
+где LINK - ссылка на log файл веб-сервера apache
 
 например:
 
