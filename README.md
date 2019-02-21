@@ -1,4 +1,4 @@
-# TODO
+# For running
 
 virtualenv --python=/usr/bin/python3 .venv
 
